@@ -1,0 +1,31 @@
+def count_unique_words(file_path):
+    word_count = {}
+    total_unique_words = 0
+
+    # 開啟檔案
+    with open(file_path, 'r') as file:
+        # 逐行讀取檔案
+        for line in file:
+            # 移除換行符號並取得單字
+            word = line.strip()
+            # 如果單字不在字典中，則新增，次數為1
+            if word not in word_count:
+                word_count[word] = 1
+                total_unique_words += 1
+            # 如果單字在字典中，則次數加1
+            else:
+                word_count[word] += 1
+
+    return total_unique_words, word_count
+
+def main():
+    file_path = r'C:\Users\fenni\Downloads\hw2_data.txt'
+    total_unique_words, word_count = count_unique_words(file_path)
+
+    print("總共有 {} 個不重複的英文字".format(total_unique_words))
+    print("每一個英文字出現次數如下：")
+    for word, count in word_count.items():
+        print("{}: {}".format(word, count))
+
+if __name__ == "__main__":
+    main()
